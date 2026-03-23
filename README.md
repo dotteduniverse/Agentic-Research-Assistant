@@ -4,6 +4,8 @@ A multi‑tool AI agent that answers questions by combining web search, SQL quer
 
 ## Architecture
 
+![Architecture Diagram](docs/architecture.PNG) 
+
 +------------------+        +--------------------------------------+
 |   User Interface |        |          Agent Core (LangGraph)       |
 |                  |        |                                      |
