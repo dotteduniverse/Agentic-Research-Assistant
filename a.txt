@@ -1,0 +1,19 @@
+agentic-research-assistant/
+├── README.md
+├── requirements.txt
+├── .env.example
+├── docker-compose.yml
+├── app.py                 # Streamlit UI
+├── src/
+│   ├── __init__.py
+│   ├── agent.py           # LangGraph agent definition
+│   ├── tools.py           # Tool implementations
+│   ├── config.py
+│   ├── database.py        # SQLite/PostgreSQL setup
+│   └── models.py          # Pydantic models for API
+├── tests/
+│   ├── __init__.py
+│   └── test_agent.py
+├── data/                  # Placeholder for PDFs
+└── scripts/
+    └── init_db.py         # Create synthetic database
