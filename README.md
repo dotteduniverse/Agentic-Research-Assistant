@@ -4,34 +4,32 @@ A multi‑tool AI agent that answers questions by combining web search, SQL quer
 
 ## Architecture
 
-```mermaid
-graph TD
-    subgraph User Interface
-        U[User Question] --> S[Streamlit UI / API]
-    end
-
-    subgraph Agent Core (LangGraph)
-        S --> A[Agent State]
-        A --> R[Reasoning Loop]
-        R --> T{Choose Tool}
-        T -->|Search| W[Web Search Tool<br/>DuckDuckGo]
-        T -->|Database| D[SQL Query Tool<br/>PostgreSQL]
-        T -->|PDF| P[PDF Reader Tool<br/>Local PDFs]
-        W --> R
-        D --> R
-        P --> R
-        R --> F[Final Answer]
-    end
-
-    subgraph Tools
-        W --> WS[DuckDuckGo API]
-        D --> DB[(Synthetic<br/>PostgreSQL)]
-        P --> PDF[PDF Files in data/]
-    end
-
-    F --> S
-    S --> U
-```
++------------------+        +--------------------------------------+
+|   User Interface |        |          Agent Core (LangGraph)       |
+|                  |        |                                      |
+|  Streamlit UI    |------->|  Agent State --> Reasoning Loop      |
+|  or API Client   |        |        |                             |
++------------------+        |        v                             |
+                            |   Choose Tool                        |
+                            |   /    |    \                        |
+                            |  /     |     \                       |
+                            v v      v      v v                    |
+                     +-------+-------+--------+-------+           |
+                     | Web Search | SQL Query | PDF Reader |       |
+                     +-------+-------+--------+-------+           |
+                            |       |         |                    |
+                            v       v         v                    |
+                     +-------+-------+--------+-------+           |
+                     |DuckDuckGo| Synthetic| Local   |           |
+                     |   API    | Database | PDFs    |           |
+                     +----------+----------+---------+           |
+                            |       |         |                    |
+                            +-------+---------+--------------------+
+                                    |
+                                    v
+                           +------------------+
+                           |   Final Answer   |
+                           +------------------+
 
 ## Tech Stack
 - LangGraph – agent orchestration
