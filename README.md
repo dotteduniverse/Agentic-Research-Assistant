@@ -6,32 +6,6 @@ A multi‑tool AI agent that answers questions by combining web search, SQL quer
 
 ![Architecture Diagram](docs/architecture.PNG) 
 
-+------------------+        +--------------------------------------+
-|   User Interface |        |          Agent Core (LangGraph)       |
-|                  |        |                                      |
-|  Streamlit UI    |------->|  Agent State --> Reasoning Loop      |
-|  or API Client   |        |        |                             |
-+------------------+        |        v                             |
-                            |   Choose Tool                        |
-                            |   /    |    \                        |
-                            |  /     |     \                       |
-                            v v      v      v v                    |
-                     +-------+-------+--------+-------+           |
-                     | Web Search | SQL Query | PDF Reader |       |
-                     +-------+-------+--------+-------+           |
-                            |       |         |                    |
-                            v       v         v                    |
-                     +-------+-------+--------+-------+           |
-                     |DuckDuckGo| Synthetic| Local   |           |
-                     |   API    | Database | PDFs    |           |
-                     +----------+----------+---------+           |
-                            |       |         |                    |
-                            +-------+---------+--------------------+
-                                    |
-                                    v
-                           +------------------+
-                           |   Final Answer   |
-                           +------------------+
 
 ## Tech Stack
 - LangGraph – agent orchestration
